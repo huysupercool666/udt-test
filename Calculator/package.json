@@ -1,0 +1,35 @@
+{
+  "name": "question1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:client": "webpack --config src/webpack/client.config.js",
+    "build:server": "webpack --config src/webpack/server.config.js",
+    "build": "npm run build:client && npm run build:server",
+    "start:dev": "concurrently \"npm run build:server && nodemon --exec babel-node src/server/index.js\"  \"npm run build:client -- --watch\"",
+    "start": "npm run start:dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/node": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
