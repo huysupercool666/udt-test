@@ -1,14 +1,14 @@
-const path = require('path')
-
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-  entry: './src/client/index.jsx',
-  mode: 'production',
+  entry: "./src/client/index.js",
+  mode: "production",
   output: {
-    path: path.resolve(__dirname, '../public'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "../dist"),
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".tsx", ".js", ".jsx"],
   },
   module: {
     rules: [
@@ -16,9 +16,18 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
-      }
-    ]
-  }
-}
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.(s[ac]ss|css)$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "app.css",
+    }),
+  ],
+};
