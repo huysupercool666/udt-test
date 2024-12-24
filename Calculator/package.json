@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:client": "webpack --config src/webpack/client.config.js",
-    "build:server": "webpack --config src/webpack/server.config.js",
+    "build:client": "webpack --config src/webpack/webpack.client.config.js",
+    "build:server": "webpack --config src/webpack/webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
     "start:dev": "concurrently \"npm run build:server && nodemon --exec babel-node src/server/index.jsx\"  \"npm run build:client -- --watch\"",
     "start": "npm run start:dev",
