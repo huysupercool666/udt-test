@@ -1,30 +1,29 @@
 import express from 'express'
+import React from 'react'
 import { renderToString } from 'react-dom/server'
 import App from '../client/App'
 
-const app = express()
-app.get('*', (req, res) => {
-  const html = renderToString(<App />)
-  res.send(
-    `
+const server = express()
+
+server.use(express.static('dist'))
+
+server.get('/', (req, res) => {
+  const appString = renderToString(<App />)
+  res.send(`
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
       <head>
-        <meta charset="utf-8">
-        <title>SSR React App</title>
+        <title>My App</title>
         <link rel="stylesheet" href="app.css">
       </head>
       <body>
-        <div id="root">${html}</div>
-        <script src="bundle.js"></script>
+        <div id="root">${appString}</div>
+        <script src="script.js"></script>
       </body>
     </html>
-  `
-  )
+  `)
 })
 
-const port = process.env.PORT || 3000
-
-app.listen(port, () => {
-  console.log('Server is running on port: ', port)
+server.listen(3000, () => {
+  console.log('Server is running on port 3000')
 })
