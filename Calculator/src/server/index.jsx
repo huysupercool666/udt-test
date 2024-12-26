@@ -12,10 +12,11 @@ app.get('*', (req, res) => {
       <head>
         <meta charset="utf-8">
         <title>SSR React App</title>
+        <link rel="stylesheet" href="app.css">
       </head>
       <body>
         <div id="root">${html}</div>
-        <script src="/bundle.js"></script>
+        <script src="bundle.js"></script>
       </body>
     </html>
   `

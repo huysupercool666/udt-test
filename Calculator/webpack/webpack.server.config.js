@@ -1,6 +1,5 @@
 const path = require('path')
 const externals = require('webpack-node-externals')
-
 module.exports = (env) => {
   const isProduction = env.production === true
   return {
@@ -8,7 +7,7 @@ module.exports = (env) => {
     entry: './src/server/index.jsx',
     mode: isProduction ? 'production' : 'development',
     output: {
-      path: path.resolve(__dirname, '../dist'),
+      path: path.resolve(__dirname, '../../dist'),
       filename: 'server.js'
     },
     externals: [externals()],
