@@ -6,7 +6,7 @@ module.exports = (env) => {
     entry: './src/client/index.jsx',
     mode: isProduction ? 'production' : 'development',
     output: {
-      path: path.resolve(__dirname, '../../dist'),
+      path: path.resolve(__dirname, '../dist'),
       filename: 'script.js'
     },
     module: {
@@ -21,6 +21,10 @@ module.exports = (env) => {
         {
           test: /\.scss$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
         }
       ]
     },
