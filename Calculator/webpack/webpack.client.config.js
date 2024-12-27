@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = (env) => {
   const isProduction = env.production === true
   return {
-    entry: './src/client/index.jsx',
+    entry: './src/client/index.tsx',
     mode: isProduction ? 'production' : 'development',
     output: {
       path: path.resolve(__dirname, '../dist'),
@@ -12,7 +12,7 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(tsx|ts|js|jsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader'
@@ -34,7 +34,7 @@ module.exports = (env) => {
       })
     ],
     resolve: {
-      extensions: ['.tsx', '.js', '.jsx']
+      extensions: ['.ts', '.tsx', '.js', '.jsx']
     }
   }
 }

@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server'
 import App from '../client/App'
 
 const server = express()
-
+const Port = 3000
 server.use(express.static('dist'))
 
 server.get('/', (req, res) => {
@@ -24,6 +24,6 @@ server.get('/', (req, res) => {
   `)
 })
 
-server.listen(3000, () => {
+server.listen(Port, () => {
   console.log('Server is running on port 3000')
 })

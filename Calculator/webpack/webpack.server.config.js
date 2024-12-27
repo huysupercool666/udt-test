@@ -4,7 +4,7 @@ module.exports = (env) => {
   const isProduction = env.production === true
   return {
     target: 'node',
-    entry: './src/server/index.jsx',
+    entry: './src/server/index.tsx',
     mode: isProduction ? 'production' : 'development',
     output: {
       path: path.resolve(__dirname, '../dist'),
@@ -14,7 +14,7 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(jsx|js|ts|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader'
@@ -32,9 +32,6 @@ module.exports = (env) => {
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.jsx']
-    },
-    node: {
-      __dirname: false
     }
   }
 }
